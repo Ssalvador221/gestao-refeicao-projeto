@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id String @id @default(uuid())
+  nome_completo String 
+  age Int
+  email String
+  refeicao Refeicao[]
+  created_at DateTime @default(now())
+
+  @@map("usuario")
+}
+
+model Refeicao {
+  id String @id @default(uuid())
+  nome_refeicao String
+  descricao String
+  isDiet Boolean
+  created_at DateTime @default(now())
+  updated_at DateTime?
+  deleted_at DateTime?
+  userId String
+  user Usuario @relation(fields: [userId], references: [id])
+
+  @@map("refeicao")
+}

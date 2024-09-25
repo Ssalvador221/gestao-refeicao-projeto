@@ -1,0 +1,21 @@
+services:
+  orm_prisma_node:
+    image: mysql:8.0
+    volumes:
+      - db-data:/var/lib/mysql
+    hostname: "docker"
+    container_name: "gestao-refeicao"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
