@@ -11,7 +11,6 @@ class UserController {
     return res.json(users)
   }
 
-
   async getUserByID(req, res, next) {
     const { id } = req.params;
     const token = req.headers.authorization
@@ -38,7 +37,7 @@ class UserController {
     }
   }
 
-
+  
   async create(req, res) {
     try {
       const { nome_completo, email, age } = req.body
