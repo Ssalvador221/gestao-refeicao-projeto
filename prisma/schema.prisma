@@ -20,6 +20,8 @@ model Usuario {
   email String
   refeicao Refeicao[]
   created_at DateTime @default(now())
+  updated_at DateTime? 
+  deleted_at DateTime?
 
   @@map("usuario")
 }
@@ -29,6 +31,7 @@ model Refeicao {
   nome_refeicao String
   descricao String
   isDiet Boolean
+  hora_refeicao DateTime
   created_at DateTime @default(now())
   updated_at DateTime?
   deleted_at DateTime?
